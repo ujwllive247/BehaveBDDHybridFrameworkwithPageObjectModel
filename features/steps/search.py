@@ -5,12 +5,13 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
+
+
+
 @given('I navigate to the Home page')
 def step_given_navigate_to_home_page(context):
-    context.driver = webdriver.Firefox()
-    # context.driver.maximize_window()
-    context.driver.get("https://tutorialsninja.com/demo/")
-    time.sleep(3)
+     expected_title = "Your Store"
+     assert context.driver.title.__eq__(expected_title)
 
 
 
@@ -44,7 +45,7 @@ def step_when_click_search_button(context):
 def step_then_valid_product_displayed(context):
     assert context.driver.find_element(By.LINK_TEXT,"HP LP3065").is_displayed()
     time.sleep(3)
-    context.driver.quit()
+
 
 
 
@@ -53,7 +54,7 @@ def step_then_proper_message_displayed(context):
     # Code to verify proper message in search results for invalid product
     expected_text = "There is no product that matches the search criteria."
     assert context.driver.find_element(By.XPATH,"//input[@id='button-search']/following-sibling::p").text.__eq__(expected_text)
-    context.driver.quit
+
 
 
 

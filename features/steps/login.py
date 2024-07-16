@@ -6,12 +6,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
+
+
 @given('I navigate to the Login page')
 def step_given_navigate_to_login_page(context):
     # Code to navigate to the login page
-    context.driver = webdriver.Firefox()
-    context.driver.maximize_window()
-    context.driver.get("https://tutorialsninja.com/demo/")
+
     context.driver.find_element(By.XPATH, "//span[text()='My Account']").click()
     context.driver.find_element(By.LINK_TEXT, 'Login').click()
 
@@ -71,7 +71,7 @@ def step_then_logged_in(context):
     assert context.driver.find_element(By.LINK_TEXT, "Edit your account information").is_displayed()
     time.sleep(3)
 
-    context.driver.quit()
+
 
 
 @then('I should get a proper warning message')
