@@ -4,7 +4,7 @@ Feature: Login Functionality
     Given I navigate to the Login page
 
 
-   @login
+   @login @pom
   Scenario: Login with valid credentials
     When I enter a valid email address and a valid password into the fields
     And I click on the Login button
