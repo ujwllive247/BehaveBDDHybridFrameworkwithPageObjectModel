@@ -4,21 +4,21 @@ Feature: Login Functionality
     Given I navigate to the Login page
 
 
-   @login @pom
+   @login @pom1
   Scenario: Login with valid credentials
     When I enter a valid email address and a valid password into the fields
     And I click on the Login button
     Then I should get logged in
-   @login
 
 
+   @login @pom2
   Scenario: Login with an invalid email and a valid password
     When I enter an invalid email and a valid password into the fields
     And I click on the Login button
     Then I should get a proper warning message
 
 
-  @login
+  @login  @pom3
   Scenario: Login with a valid email and an invalid password
     When I enter a valid email and an invalid password into the fields
     And I click on the Login button

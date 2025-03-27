@@ -41,9 +41,15 @@ def step_when_enter_invalid_email_valid_password(context):
     # Generate random email address
     time_stamp = datetime.now().strftime("%Y_%m_%H_%M_%S")
     invalid_email = "ujwl" + time_stamp + "@gmail.com"
-    context.driver.find_element(By.ID, "input-email").send_keys(invalid_email)
-    context.driver.find_element(By.ID, "input-password").send_keys("Kangaroo@123")
-    time.sleep(5)
+    context.login_page = LoginPage(context.driver)
+    context.login_page.enter_email_address(invalid_email)
+    context.login_page.enter_password("Kangaroo@123")
+
+    # time_stamp = datetime.now().strftime("%Y_%m_%H_%M_%S")
+    # invalid_email = "ujwl" + time_stamp + "@gmail.com"
+    # context.driver.find_element(By.ID, "input-email").send_keys(invalid_email)
+    # context.driver.find_element(By.ID, "input-password").send_keys("Kangaroo@123")
+    # time.sleep(5)
 
 @when('I enter a valid email and an invalid password into the fields')
 def step_when_enter_valid_email_invalid_password(context):
@@ -94,4 +100,6 @@ def step_then_logged_in(context):
 def step_then_warning_message(context):
     # Code to verify warning message is displayed
     expected_warning_message = "Warning: No match for E-Mail Address and/or Password."
-    assert context.driver.find_element(By.XPATH,"//div[@id='account-login']div[1]").text.__contains__(expected_warning_message)
+    assert context.login_page.display_status_of_warning_message(expected_warning_message)
+
+    # assert context.driver.find_element(By.XPATH,"//div[@id='account-login']div[1]").text.__contains__(expected_warning_message)
